@@ -1,5 +1,4 @@
 import React from "react";
 
-const FunctionalGreeting = () => <h1>Hello from React!</h1>
-
+const FunctionalGreeting = () => <span>Functional Greeting!</span>
 export default FunctionalGreeting;
