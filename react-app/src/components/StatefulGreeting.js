@@ -14,8 +14,8 @@ class StatefulGreeting extends React.Component {
 
     handleClick() {
         this.setState({
-            intro: "Goodbye!",
-            btnText: "Enter"
+            intro: this.state.intro == "Hello!"? "Goodbye!": "Hello!",
+            btnText: this.state.btnText == "Exit"? "Enter": "Exit",
         }, () => {
             console.log("new state: ",this.state)
         });
