@@ -8,26 +8,34 @@ class StatefulGreeting extends React.Component {
         super(props);
         this.state = {
             intro: "Hello!",
-            btnText: "Exit"
+            btnText: "Exit",
+            count: 0,
         }
     }
 
-    handleClick() {
-        this.setState({
-            intro: this.state.intro == "Hello!"? "Goodbye!": "Hello!",
-            btnText: this.state.btnText == "Exit"? "Enter": "Exit",
-        }, () => {
-            console.log("new state: ",this.state)
+    incrementCount() {
+        this.setState((prevState, prevProps) => {
+            return { count: prevState.count + 1, }
         });
-        console.log("old state: ",this.state)
+    }
+
+    handleClick() {
+        this.setState((prevState, prevProps) => {
+            return {
+                intro: prevState.intro == "Hello!" ? "Goodbye!" : "Hello!",
+                btnText: prevState.btnText == "Exit" ? "Enter" : "Exit",
+            }
+        });
     }
 
     render() {
         return (
             <div>
                 <div>Stateful (Class) Component</div>
+                <div>Counter: {this.state.count} </div>
                 <div>{this.state.intro} {this.props.greeting}</div>
                 <button onClick={() => this.handleClick()}>{this.state.btnText}</button>
+                <button onClick={() => this.incrementCount()}>Increment Counter</button>
             </div>
         )
     }
