@@ -1,9 +1,6 @@
+import React, { Component } from 'react'
 
-import React from "react";
-
-
-class StatefulGreeting extends React.Component {
-
+export class StatefulGreeting extends Component {
     constructor(props) {
         super(props);
         this.state = {
